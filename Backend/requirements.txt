@@ -1,0 +1,28 @@
+# Core LangChain packages
+langchain
+langchain-community
+langchain-text-splitters
+langchain-huggingface
+langchain-mongodb
+langchain-groq
+
+# Vector database
+pymongo
+
+# Embeddings
+sentence-transformers
+
+# Document parsing
+unstructured
+unstructured[pdf]
+
+# NLP utilities
+nltk
+
+# Web framework
+fastapi
+uvicorn
+pydantic
+
+# Environment management
+python-dotenv
