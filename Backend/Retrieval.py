@@ -19,7 +19,7 @@ MONGODB_COLLECTION = os.getenv("MONGODB_COLLECTION", "vector_docs")
 PORT = int(os.getenv("PORT", 8000))  
 
 # --- FastAPI setup ---
-app = FastAPI(title="RAG Chatbot API with MongoDB Atlas")
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
