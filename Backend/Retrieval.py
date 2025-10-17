@@ -96,7 +96,3 @@ async def reset_memory():
 @app.get("/")
 async def root():
     return {"message": "RAG Chatbot (MongoDB Atlas) is running!"}
-
-# --- Run app using port from .env ---
-if __name__ == "__main__":
-    uvicorn.run("Retrieval:app", host="0.0.0.0", port=PORT)
