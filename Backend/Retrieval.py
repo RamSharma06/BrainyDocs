@@ -9,12 +9,14 @@ from langchain.memory import ConversationBufferMemory
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
+import uvicorn
 
 # --- Load environment variables ---
 load_dotenv()
 MONGODB_URI = os.getenv("MONGODB_URI")
 MONGODB_DB = os.getenv("MONGODB_DB", "my_db")
 MONGODB_COLLECTION = os.getenv("MONGODB_COLLECTION", "vector_docs")
+PORT = int(os.getenv("PORT", 8000))  
 
 # --- FastAPI setup ---
 app = FastAPI(title="RAG Chatbot API with MongoDB Atlas")
@@ -30,14 +32,14 @@ app.add_middleware(
 # --- Connect to MongoDB ---
 client = MongoClient(MONGODB_URI)
 db = client[MONGODB_DB]
-collection = db[MONGODB_COLLECTION]  
+collection = db[MONGODB_COLLECTION]
 
 # --- Initialize Embeddings ---
 embedding = HuggingFaceEmbeddings()
 
 # --- Setup MongoDB Vector Store ---
 vector_store = MongoDBAtlasVectorSearch(
-    collection=collection,        
+    collection=collection,
     embedding=embedding,
     index_name="vector_index",
 )
@@ -94,3 +96,7 @@ async def reset_memory():
 @app.get("/")
 async def root():
     return {"message": "RAG Chatbot (MongoDB Atlas) is running!"}
+
+# --- Run app using port from .env ---
+if __name__ == "__main__":
+    uvicorn.run("Retrieval:app", host="0.0.0.0", port=PORT)
