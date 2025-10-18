@@ -1,28 +1,28 @@
 # Core LangChain packages
 langchain==0.1.20
-langchain-community==0.0.14
-langchain-text-splitters
-langchain-huggingface
-langchain-mongodb
-langchain-groq
+langchain-community==0.0.40
+langchain-text-splitters==0.0.1
+langchain-huggingface==0.0.3
+langchain-mongodb==0.1.3
+langchain-groq==0.0.1
 
 # Vector database
-pymongo
+pymongo==4.6.3
 
 # Embeddings
-sentence-transformers
+sentence-transformers==2.2.2
 
 # Document parsing
-unstructured
+unstructured==0.12.6
 unstructured[pdf]
 
 # NLP utilities
-nltk
+nltk==3.8.1
 
 # Web framework
-fastapi
-uvicorn
-pydantic
+fastapi==0.110.0
+uvicorn==0.29.0
+pydantic==2.6.4
 
 # Environment management
-python-dotenv
+python-dotenv==1.0.1
