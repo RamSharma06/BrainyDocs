@@ -1,6 +1,6 @@
 # Core LangChain packages
-langchain
-langchain-community
+langchain==0.1.20
+langchain-community==0.0.14
 langchain-text-splitters
 langchain-huggingface
 langchain-mongodb
