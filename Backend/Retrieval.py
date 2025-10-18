@@ -16,10 +16,10 @@ load_dotenv()
 MONGODB_URI = os.getenv("MONGODB_URI")
 MONGODB_DB = os.getenv("MONGODB_DB", "my_db")
 MONGODB_COLLECTION = os.getenv("MONGODB_COLLECTION", "vector_docs")
-PORT = int(os.getenv("PORT", 8000))  
+
 
 # --- FastAPI setup ---
-app = FastAPI()
+app = FastAPI() 
 
 app.add_middleware(
     CORSMiddleware,
@@ -96,3 +96,7 @@ async def reset_memory():
 @app.get("/")
 async def root():
     return {"message": "RAG Chatbot (MongoDB Atlas) is running!"}
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("Retrieval:app", host="0.0.0.0", port=port)
